@@ -4,5 +4,3 @@ Silvério
 porque acho que isso deve ser feito automaticamente no menu das transações
 
 .Menu dos clientes no figma já está feito
-
-Teste
