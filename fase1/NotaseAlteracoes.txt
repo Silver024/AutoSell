@@ -1,6 +1,0 @@
-Silvério
-
-.adicionei "eliminar cliente" aos requisitos e tirei o "adicionar transação ao historico do cliente"
-porque acho que isso deve ser feito automaticamente no menu das transações
-
-.Menu dos clientes no figma já está feito
