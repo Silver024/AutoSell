@@ -1,61 +1,69 @@
 import javax.swing.*;
 import java.awt.event.*;
 
-public class MenuPrincipal extends JDialog {
+public class MenuPrincipal extends JFrame {
     private JPanel contentPane;
-    private JButton buttonSair;
-    private JButton veículosButton;
-    private JButton transaçõesButton;
-    private JButton clientesButton;
-    private JButton eventosButton;
-    private JButton peçasButton;
+    private JButton btnSair;
+    private JButton btnMenuVeiculos;
+    private JButton btnMenuTransacoes;
+    private JButton btnMenuClientes;
+    private JButton btnMenuEventos;
+    private JButton btnMenuPecas;
     private JButton estatisticasButton;
     private JLabel Logo;
     private JButton buttonCancel;
 
-    public MenuPrincipal() {
+    public MenuPrincipal(String title) {
+        super(title);
+
         setContentPane(contentPane);
-        setModal(true);
-        getRootPane().setDefaultButton(buttonSair);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        pack();
+        getRootPane().setDefaultButton(btnSair);
+        setLocationRelativeTo(null);
 
-        buttonSair.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onOK();
-            }
-        });
-
+        //sair
+        btnSair.addActionListener(this::btnSairActionPerformed);
 
 
-        // call onCancel() when cross is clicked
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                onCancel();
-            }
-        });
-
-        // call onCancel() on ESCAPE
-        contentPane.registerKeyboardAction(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        //Menus
+        btnMenuClientes.addActionListener(this::btnMenuClientesActionPerformed);
+       /*
+        btnMenuTransacoes.addActionListener(this::btnMenuTransacoesActionPerformed);
+        btnMenuEventos.addActionListener(this::btnMenuEventosActionPerformed);
+        btnMenuPecas.addActionListener(this::btnMenuPecasActionPerformed);
+    */
     }
 
-    private void onOK() {
-        // add your code here
-        dispose();
-    }
 
-    private void onCancel() {
-        // add your code here if necessary
-        dispose();
-    }
-
-    public static void main(String[] args) {
-        MenuPrincipal dialog = new MenuPrincipal();
-        dialog.pack();
-        dialog.setVisible(true);
+    private void btnSairActionPerformed(ActionEvent e) {
         System.exit(0);
     }
+
+    private void btnMenuClientesActionPerformed(ActionEvent e){
+        new MenuClientes("Menu Clientes");
+    }
+/*
+    private void btnMenuEventosActionPerformed(ActionEvent e){
+        new MenuEventos("Menu Eventos");
+    }
+
+    private void btnMenuProvasActionPerformed(ActionEvent e){
+        new MenuProva();
+    }
+
+    private void btnMenuAtletaActionPerformed(ActionEvent e){
+        new MenuAtletas("Menu Atletas");
+    }
+
+    private void btnMenuEventosActionPerformed(ActionEvent e){
+        new MenuEventos("Menu Eventos");
+    }
+
+*/
+
+    public static void main(String[] args) {
+        new MenuPrincipal("AutoSell").setVisible(true);
+    }
+
 }
