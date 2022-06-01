@@ -11,12 +11,15 @@ public class MenuClientes extends JFrame {
     private JButton btnListarClientes;
     private JButton btnEditarCliente;
 
+    public DadosAplicacao dadosAplicacao;
+
     public MenuClientes(String title) {
         super(title);
 
 
         btnVoltar.addActionListener(this::btnVoltarActionPerformed);
-       // btnRegistarCliente.addActionListener(this::btnRegistarClienteActionPerformed);
+        btnRegistarCliente.addActionListener(this::btnRegistarClienteActionPerformed);
+        btnListarClientes.addActionListener(this::btnListarClienteActionPerformed);
 
         setContentPane(painelMenuClientes);
         pack();
@@ -31,11 +34,15 @@ public class MenuClientes extends JFrame {
         toBack();
     }
 
-    private void btnCriarAtletaActionPerformed(ActionEvent e){
-        /* new RegistarAtleta("Criar Atleta");
-        guardarDadosAtleta();
+    private void btnRegistarClienteActionPerformed(ActionEvent e){
+         new RegistarCliente("Registar Cliente");
+        //guardarDadosAtleta();
 
-         */
+    }
+
+    private void btnListarClienteActionPerformed(ActionEvent e){
+        new ListarClientes("Listar Cliente", dadosAplicacao);
+
     }
 
 
