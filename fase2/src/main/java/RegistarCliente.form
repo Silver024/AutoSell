@@ -92,7 +92,9 @@
               </grid>
             </constraints>
             <properties>
+              <focusTraversalPolicyProvider value="false"/>
               <text value=""/>
+              <toolTipText value="dd/mm/yyyy"/>
             </properties>
           </component>
           <component id="84076" class="javax.swing.JTextField" binding="textFieldContacto">
