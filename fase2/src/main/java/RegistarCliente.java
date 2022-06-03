@@ -63,6 +63,8 @@ public class RegistarCliente extends JFrame {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter
                 .ofPattern(dateFormat)
                 .withResolverStyle(ResolverStyle.STRICT);
+
+
         try {
             LocalDate date = LocalDate.parse(dataNascimento, dateTimeFormatter);
         } catch (DateTimeParseException e) {
@@ -70,6 +72,21 @@ public class RegistarCliente extends JFrame {
         return;
         }
 
+        //verify if nif is a number
+        try {
+            Double.parseDouble(nif);
+        } catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null,"NIF: '"+ nif +"' inválido", "Erro", JOptionPane.INFORMATION_MESSAGE);
+            return ;
+        }
+
+        //verify if contacto is a number
+        try {
+            Double.parseDouble(contacto);
+        } catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null,"Contacto: '"+ contacto +"' inválido", "Erro", JOptionPane.INFORMATION_MESSAGE);
+            return ;
+        }
 
 
         if (nome.isEmpty()){

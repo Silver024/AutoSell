@@ -23,4 +23,11 @@ public enum DadosAplicacao implements Serializable{
         }
         clientes.add(cliente);
     }
+
+    public void eliminarCliente(Cliente cliente) {
+        if (cliente == null || !clientes.contains(cliente)){
+            return;
+        }
+        clientes.remove(cliente);
+    }
 }

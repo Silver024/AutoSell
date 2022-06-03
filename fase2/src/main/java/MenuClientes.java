@@ -20,6 +20,7 @@ public class MenuClientes extends JFrame {
         btnVoltar.addActionListener(this::btnVoltarActionPerformed);
         btnRegistarCliente.addActionListener(this::btnRegistarClienteActionPerformed);
         btnListarClientes.addActionListener(this::btnListarClienteActionPerformed);
+        btnEliminarCliente.addActionListener(this::btnEliminarClienteActionPerformed);
 
         setContentPane(painelMenuClientes);
         pack();
@@ -45,6 +46,10 @@ public class MenuClientes extends JFrame {
 
     }
 
+    private void btnEliminarClienteActionPerformed(ActionEvent e){
+        new EliminarCliente("Eliminar Cliente", dadosAplicacao);
+
+    }
 
 
 
