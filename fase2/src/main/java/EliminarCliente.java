@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.*;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -8,6 +9,7 @@ public class EliminarCliente extends JFrame {
     private JButton btnEliminar;
     private JButton btnCancelar;
     private JComboBox cbEliminar;
+    private JTable ListaClienteEliminar;
 
 
     private DadosAplicacao dadosAplicacao;
@@ -34,6 +36,8 @@ public class EliminarCliente extends JFrame {
 
 
 
+
+
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
         btnEliminar.addActionListener(this::btnEliminarActionPerformed);
         cbEliminar.addActionListener(this::cbEliminarActionPerformed);
@@ -46,30 +50,13 @@ public class EliminarCliente extends JFrame {
 
     private void btnEliminarActionPerformed(ActionEvent e){
         LinkedList<Cliente> clientes = dadosAplicacao.INSTANCIA.getClientes();
-       // Cliente clienteEliminar;
         String cliente_selecionado = (String) cbEliminar.getSelectedItem();
         for (Cliente cliente : clientes) {
             if((cliente.getNome()).equals(cliente_selecionado)) {
-                String nome = cliente.getNome();
-                String morada = cliente.getMorada();
-                String genero = cliente.getGenero();
-                String dataNascimento = cliente.getDataNascimento();
-                String contacto = cliente.getContacto();
-                String nif = cliente.getnif();
-                String estadoProfissional = cliente.getEstadoProfissional();
-                String email = cliente.getEmail();
-
-                //DadosAplicacao.INSTANCIA.eliminarCliente(new Cliente(nome,morada,genero,dataNascimento,contacto,nif,estadoProfissional,email));
                 DadosAplicacao.INSTANCIA.eliminarCliente(cliente);
                 break;
             }
         }
-
-
-
-
-   // DadosAplicacao.INSTANCIA.eliminarCliente(Cliente(nome,morada,genero,dataNascimento,contacto,nif,estadoProfissional,email));
-
         setVisible(false);
         toBack();
     }
@@ -78,7 +65,33 @@ public class EliminarCliente extends JFrame {
     pack();
     setVisible(true);
 
+        LinkedList<Cliente> clientes = dadosAplicacao.INSTANCIA.getClientes();
+        Object cliente_selecionado = cbEliminar.getSelectedItem();
+        for (Cliente cliente : clientes) {
+            if((cliente.getNome()).equals(cliente_selecionado)) {
+                criarTabela(cliente);
+                //break;
+            }
+        }
     }
+
+
+    private void criarTabela(Cliente cliente) {
+
+        String[] cabecalhos = {"Nome", "Morada", "Género", "Data de Nascimento", "Contacto", "Email", "NIF", "Estado Profissional"};
+
+        DefaultTableModel modelo = new DefaultTableModel(cabecalhos,0);
+
+
+            Object[] objects = {cliente.getNome(), cliente.getMorada(), cliente.getGenero(), cliente.getDataNascimento(), cliente.getContacto(), cliente.getEmail(), cliente.getnif(), cliente.getEstadoProfissional()};
+            modelo.addRow(objects);
+
+
+        ListaClienteEliminar.setModel(modelo);
+        ListaClienteEliminar.setEnabled(false);
+        ListaClienteEliminar.getTableHeader().setReorderingAllowed(false);
+    }
+
 
 
 }
