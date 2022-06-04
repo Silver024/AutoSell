@@ -21,6 +21,7 @@ public class MenuClientes extends JFrame {
         btnRegistarCliente.addActionListener(this::btnRegistarClienteActionPerformed);
         btnListarClientes.addActionListener(this::btnListarClienteActionPerformed);
         btnEliminarCliente.addActionListener(this::btnEliminarClienteActionPerformed);
+        btnEditarCliente.addActionListener(this::btnEditarClienteActionPerformed);
 
         setContentPane(painelMenuClientes);
         pack();
@@ -51,6 +52,10 @@ public class MenuClientes extends JFrame {
 
     }
 
+    private void btnEditarClienteActionPerformed(ActionEvent e){
+        new EditarCliente("Editar Cliente", dadosAplicacao);
+
+    }
 
 
 
