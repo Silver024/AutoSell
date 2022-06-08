@@ -28,9 +28,9 @@ public class MenuPrincipal extends JFrame {
 
         //Menus
         btnMenuClientes.addActionListener(this::btnMenuClientesActionPerformed);
+        btnMenuEventos.addActionListener(this::btnMenuEventosActionPerformed);
        /*
         btnMenuTransacoes.addActionListener(this::btnMenuTransacoesActionPerformed);
-        btnMenuEventos.addActionListener(this::btnMenuEventosActionPerformed);
         btnMenuPecas.addActionListener(this::btnMenuPecasActionPerformed);
     */
     }
@@ -43,11 +43,11 @@ public class MenuPrincipal extends JFrame {
     private void btnMenuClientesActionPerformed(ActionEvent e){
         new MenuClientes("Menu Clientes");
     }
-/*
+
     private void btnMenuEventosActionPerformed(ActionEvent e){
         new MenuEventos("Menu Eventos");
     }
-
+/*
     private void btnMenuProvasActionPerformed(ActionEvent e){
         new MenuProva();
     }
