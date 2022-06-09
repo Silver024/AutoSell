@@ -29,11 +29,11 @@ public class MenuEventos extends JFrame {
     }
 
     private void btnAlterarEventoDecorrerActionPerformed(ActionEvent actionEvent) {
-
+        new AlterarEventoDecorrer("AlterarEventoDecorrer");
     }
 
     private void btnConsultarEventoActionPerformed(ActionEvent actionEvent) {
-
+        new ConsultarEvento("ConsultarEvento");
     }
 
     private void btnListarEventosActionPerformed(ActionEvent actionEvent) {

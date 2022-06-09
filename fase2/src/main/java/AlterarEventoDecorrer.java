@@ -1,31 +1,25 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
-
-public class AlterarEvento extends JFrame {
-    private JPanel painelAlterarEvento;
+public class AlterarEventoDecorrer extends JFrame {
+    private JPanel painelAlterarEventoDecorrer;
     private JPanel painelSelecionarEvento;
     private JComboBox cbSelecionarEvento;
     private JPanel painelTabela;
     private JTable tabelaAlterarEvento;
     private JPanel painelAlterarDados;
-    private JTextField textFieldNome;
-    private JTextField textFieldDataInicio;
     private JTextField textFieldDataFim;
-    private JTextField textFieldLocal;
     private JPanel painelVeiculos;
     private JTextField textFieldSelecionarVeiculo;
     private JTextField textFieldTransportarVeiculo;
+    private JButton btnTransporteEspecifico;
     private JPanel painelBotoes;
     private JButton btnGuardar;
     private JButton btnCancelar;
-    private JButton btnTransporteEspecifico;
 
-    private Evento evento;
-
-    public AlterarEvento(String title){
+    public AlterarEventoDecorrer(String title){
         super(title);
-        setContentPane(painelAlterarEvento);
+        setContentPane(painelAlterarEventoDecorrer);
         pack();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
@@ -44,11 +38,11 @@ public class AlterarEvento extends JFrame {
 
         btnGuardar.addActionListener(this::btnGuardarActionPerformed);
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
-        cbSelecionarEvento.addActionListener(this::cbAlterarEventoActionPerformed);
+        cbSelecionarEvento.addActionListener(this::cbSelecionarEventoActionPerformed);
 
     }
 
-    private void cbAlterarEventoActionPerformed(ActionEvent actionEvent) {
+    private void cbSelecionarEventoActionPerformed(ActionEvent actionEvent) {
     /*
             pack();
         setVisible(true);
