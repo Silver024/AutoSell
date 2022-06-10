@@ -29,10 +29,15 @@ public class MenuPrincipal extends JFrame {
         //Menus
         btnMenuClientes.addActionListener(this::btnMenuClientesActionPerformed);
         btnMenuEventos.addActionListener(this::btnMenuEventosActionPerformed);
+        btnMenuPecas.addActionListener(this::btnMenuPecasActionPerformed);
        /*
         btnMenuTransacoes.addActionListener(this::btnMenuTransacoesActionPerformed);
         btnMenuPecas.addActionListener(this::btnMenuPecasActionPerformed);
     */
+    }
+
+    private void btnMenuPecasActionPerformed(ActionEvent actionEvent) {
+        new MenuPecas("Menu Peças");
     }
 
 

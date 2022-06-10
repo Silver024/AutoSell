@@ -36,10 +36,15 @@ public class AlterarEventoDecorrer extends JFrame {
         }
     */
 
+        btnTransporteEspecifico.addActionListener(this::btnTransporteEspecificoActionPerformed);
         btnGuardar.addActionListener(this::btnGuardarActionPerformed);
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
         cbSelecionarEvento.addActionListener(this::cbSelecionarEventoActionPerformed);
 
+    }
+
+    private void btnTransporteEspecificoActionPerformed(ActionEvent actionEvent) {
+        new TransporteEspecifico("Alterar Transporte Especifico");
     }
 
     private void cbSelecionarEventoActionPerformed(ActionEvent actionEvent) {
