@@ -11,10 +11,6 @@ public class RegistarEvento extends JFrame {
     private JPanel painelBotoes;
     private JButton btnGuardar;
     private JButton btnCancelar;
-    private JPanel painelVeiculos;
-    private JTextField textFieldSelecionarVeiculo;
-    private JTextField textFieldTransportarVeiculo;
-    private JButton btnTransporteEspecifico;
 
     public RegistarEvento(String title){
         super(title);
@@ -24,13 +20,8 @@ public class RegistarEvento extends JFrame {
         setVisible(true);
         setLocationRelativeTo(null);
 
-        btnTransporteEspecifico.addActionListener(this::btnTransporteEspecificoActionPerformed);
         btnGuardar.addActionListener(this::btnGuardarActionPerformed);
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
-    }
-
-    private void btnTransporteEspecificoActionPerformed(ActionEvent actionEvent) {
-        new TransporteEspecifico("Registar Transporte Especifico");
     }
 
     private void btnGuardarActionPerformed(ActionEvent actionEvent) {

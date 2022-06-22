@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 public class AlterarEvento extends JFrame {
     private JPanel painelAlterarEvento;
     private JPanel painelSelecionarEvento;
-    private JComboBox cbSelecionarEvento;
+    private JComboBox cbAlterarEvento;
     private JPanel painelTabela;
     private JTable tabelaAlterarEvento;
     private JPanel painelAlterarDados;
@@ -42,17 +42,13 @@ public class AlterarEvento extends JFrame {
         }
     */
 
-        btnTransporteEspecifico.addActionListener(this::btnTransporteEspecificoActionPerformed);
         btnGuardar.addActionListener(this::btnGuardarActionPerformed);
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
-        cbSelecionarEvento.addActionListener(this::cbAlterarEventoActionPerformed);
+        cbAlterarEvento.addActionListener(this::cdAlterarEventoActionPerformed);
+
     }
 
-    private void btnTransporteEspecificoActionPerformed(ActionEvent actionEvent) {
-        new TransporteEspecifico("Alterar Transporte Especifico");
-    }
-
-    private void cbAlterarEventoActionPerformed(ActionEvent actionEvent) {
+    private void cdAlterarEventoActionPerformed(ActionEvent actionEvent) {
     /*
             pack();
         setVisible(true);

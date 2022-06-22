@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
+
 public enum DadosAplicacao implements Serializable{
     INSTANCIA;
     private LinkedList<Cliente> clientes;
@@ -30,4 +31,7 @@ public enum DadosAplicacao implements Serializable{
         }
         clientes.remove(cliente);
     }
+
+
+
 }

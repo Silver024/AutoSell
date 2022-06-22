@@ -21,27 +21,26 @@ public class MenuEventos extends JFrame {
     }
 
     private void btnRegistarEventoActionPerformed(ActionEvent actionEvent) {
-        new RegistarEvento("Registar Evento");
+        new RegistarEvento("RegistarEvento");
     }
 
     private void btnAlterarEventoActionPerformed(ActionEvent actionEvent) {
-        new AlterarEvento("Alterar Evento");
+        new AlterarEvento("AlterarEvento");
     }
 
     private void btnAlterarEventoDecorrerActionPerformed(ActionEvent actionEvent) {
-        new AlterarEventoDecorrer("Alterar Evento a Decorrer");
+
     }
 
     private void btnConsultarEventoActionPerformed(ActionEvent actionEvent) {
-        new ConsultarEvento("Consultar Evento");
+
     }
 
     private void btnListarEventosActionPerformed(ActionEvent actionEvent) {
-        new ListarEventos("Listar Eventos");
     }
 
     private void btnCancelarEventoActionPerformed(ActionEvent actionEvent) {
-        new CancelarEvento("Cancelar Evento");
+
     }
 
     private void btnVoltarActionPerformed(ActionEvent actionEvent) {

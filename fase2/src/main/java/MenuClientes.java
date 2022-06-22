@@ -4,7 +4,6 @@ import java.awt.event.*;
 public class MenuClientes extends JFrame {
     private JPanel painelMenuClientes;
     private JButton btnVoltar;
-    private JButton buttonCancel;
     private JButton btnConsultarTransacaoCliente;
     private JButton btnRegistarCliente;
     private JButton btnEliminarCliente;
@@ -12,6 +11,7 @@ public class MenuClientes extends JFrame {
     private JButton btnEditarCliente;
 
     public DadosAplicacao dadosAplicacao;
+
 
     public MenuClientes(String title) {
         super(title);
@@ -38,7 +38,6 @@ public class MenuClientes extends JFrame {
 
     private void btnRegistarClienteActionPerformed(ActionEvent e){
          new RegistarCliente("Registar Cliente");
-        //guardarDadosAtleta();
 
     }
 
