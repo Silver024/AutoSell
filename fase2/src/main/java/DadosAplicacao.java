@@ -9,13 +9,19 @@ import java.util.logging.Logger;
 public enum DadosAplicacao implements Serializable{
     INSTANCIA;
     private LinkedList<Cliente> clientes;
+    private LinkedList<Veiculo> veiculos;
 
     DadosAplicacao(){
         clientes = new LinkedList<>();
+        veiculos = new LinkedList<>();
     }
 
     public LinkedList<Cliente> getClientes(){
     return clientes;
+    }
+
+    public LinkedList<Veiculo> getVeiculos() {
+        return veiculos;
     }
 
     public void registarCliente(Cliente cliente){
@@ -31,6 +37,14 @@ public enum DadosAplicacao implements Serializable{
         }
         clientes.remove(cliente);
     }
+
+    public void registarVeiculo(Veiculo veiculo){
+        if (veiculo == null || veiculos.contains(veiculo)){
+            return;
+        }
+        veiculos.add(veiculo);
+    }
+
 
 
 
