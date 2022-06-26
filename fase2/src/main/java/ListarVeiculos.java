@@ -34,6 +34,7 @@ public class ListarVeiculos extends JFrame {
 
         for (Veiculo veiculo : veiculos){
             Object[] objects = {veiculo.getMatricula(), veiculo.getMarca(), veiculo.getModelo(), veiculo.getGarantia(), veiculo.getDisponibilidade(), veiculo.getDonoAnterior(), veiculo.getNrDonos(), veiculo.getMesRegisto(), veiculo.getAnoRegisto(), veiculo.getQuilometros(), veiculo.getCilindrada(), veiculo.getPotencia(), veiculo.getCor(), veiculo.getSegmento(), veiculo.getNrPortas(), veiculo.getCondicao()};
+            modelo.addRow(cabecalhos);
             modelo.addRow(objects);
         }
 
