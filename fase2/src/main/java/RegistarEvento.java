@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.ResolverStyle;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.LinkedList;
 
 public class RegistarEvento extends JFrame {
     private JPanel painelRegistarEvento;
@@ -18,10 +19,10 @@ public class RegistarEvento extends JFrame {
     private JButton btnGuardar;
     private JButton btnCancelar;
     private JPanel painelVeiculos;
-    private JTextField textFieldSelecionarVeiculo;
-    private JTextField textFieldTransportarVeiculo;
     private JButton btnTransporteEspecifico;
     private JComboBox cbSelecionarLocal;
+    private JComboBox cbSelecionarVeiculos;
+    private JComboBox cbSelecionarLocalTransporte;
     private DadosAplicacao dadosAplicacao;
 
     public RegistarEvento(String title){
@@ -33,21 +34,13 @@ public class RegistarEvento extends JFrame {
         setLocationRelativeTo(null);
 
         cbSelecionarLocal.setModel(new DefaultComboBoxModel<>(Local.values()));
-
-        /*LinkedList<Local> locais = dadosAplicacao.INSTANCIA.getLocais();
-
-        for (Local local : locais) {
-            String[] locaisNome = {local.getNome()};
-            String aux = locaisNome[0];
-            cbSelecionarLocal.addItem(aux);
+        cbSelecionarLocalTransporte.setModel(new DefaultComboBoxModel<>(Local.values()));
+        LinkedList<Veiculo> veiculos = dadosAplicacao.INSTANCIA.getVeiculos();
+        for (Veiculo veiculo : veiculos) {
+            String[] veiculosMatriculas = {veiculo.getMatricula()};
+            String aux = veiculosMatriculas[0];
+            cbSelecionarVeiculos.addItem(aux);
         }
-
-        cbSelecionarLocal.addItem("Adicionar local");
-        /cbSelecionarLocal.setSelectedIndex(-1);
-
-        /*if(cbSelecionarLocal.getSelectedItem().toString().equals("Adicionar local")){
-
-        }*/
 
         btnTransporteEspecifico.addActionListener(this::btnTransporteEspecificoActionPerformed);
         btnGuardar.addActionListener(this::btnGuardarActionPerformed);
@@ -87,7 +80,7 @@ public class RegistarEvento extends JFrame {
 
         String dataAtual = dateFormater.format(atual);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/uuuu");
-        try {
+        /*try {
             if(sdf.parse(dataInicio).before(sdf.parse(dataAtual))){
                 JOptionPane.showMessageDialog(null,"Data Inicio: '"+ dataInicio +"' inválida. Não é possível registar um evento que já tenha começad", "Erro", JOptionPane.INFORMATION_MESSAGE);
                 return;
@@ -95,7 +88,7 @@ public class RegistarEvento extends JFrame {
         } catch (Exception exception) {
             JOptionPane.showMessageDialog(null,"Erro ão verificar se as datas são válidas!", "Erro", JOptionPane.INFORMATION_MESSAGE);
             return;
-        }
+        }*/
 
         try {
             if(sdf.parse(dataFim).before(sdf.parse(dataInicio))){

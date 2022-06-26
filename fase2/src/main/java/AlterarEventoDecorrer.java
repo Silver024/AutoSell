@@ -20,12 +20,12 @@ public class AlterarEventoDecorrer extends JFrame {
     private JPanel painelAlterarDados;
     private JTextField textFieldDataFim;
     private JPanel painelVeiculos;
-    private JTextField textFieldSelecionarVeiculo;
-    private JTextField textFieldTransportarVeiculo;
     private JButton btnTransporteEspecifico;
     private JPanel painelBotoes;
     private JButton btnGuardar;
     private JButton btnCancelar;
+    private JComboBox cbSelecionarLocalTransporte;
+    private JComboBox cbSelecionarVeiculos;
 
     private DadosAplicacao dadosAplicacao;
 
@@ -40,6 +40,14 @@ public class AlterarEventoDecorrer extends JFrame {
         LinkedList<Evento> eventos = dadosAplicacao.INSTANCIA.getEventos();
 
         //Falta verificação para só aparecer eventos que já tenham começado, ou seja, com sysDate > dataInicio
+
+        cbSelecionarLocalTransporte.setModel(new DefaultComboBoxModel<>(Local.values()));
+        LinkedList<Veiculo> veiculos = dadosAplicacao.INSTANCIA.getVeiculos();
+        for (Veiculo veiculo : veiculos) {
+            String[] veiculosMatriculas = {veiculo.getMatricula()};
+            String aux = veiculosMatriculas[0];
+            cbSelecionarVeiculos.addItem(aux);
+        }
 
         for (Evento evento : eventos) {
             String[] eventos_nomes = {evento.getNome()};

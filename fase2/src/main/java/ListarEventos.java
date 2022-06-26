@@ -35,6 +35,7 @@ public class ListarEventos extends JFrame {
         String[] cabecalhos = {"Nome", "Data Inicio", "Data Fim", "Local"};
 
         DefaultTableModel modelo = new DefaultTableModel(cabecalhos,0);
+        modelo.addRow(cabecalhos);
 
         for (Evento evento : eventos) {
             Object[] objects = {evento.getNome(), evento.getDataInicio(), evento.getDataFim(), evento.getLocal()};

@@ -58,6 +58,7 @@ public class ConsultarStockTipo extends JFrame{
         String[] cabecalhos = {"Nome", "Quantidade", "Local"};
 
         DefaultTableModel modelo = new DefaultTableModel(cabecalhos,0);
+        modelo.addRow(cabecalhos);
 
         for (Peca peca : pecasValidas) {
             Object[] objects = {peca.getNome(), peca.getQuantidade(), peca.getLocal()};

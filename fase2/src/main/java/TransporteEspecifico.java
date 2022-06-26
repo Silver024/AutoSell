@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.util.LinkedList;
 
 public class TransporteEspecifico extends JFrame {
     private JPanel painelTransporteEspecifico;
@@ -11,6 +12,7 @@ public class TransporteEspecifico extends JFrame {
     private JComboBox cbSelecionarVeiculo;
     private JComboBox cbSelecionarLocalParaTransporte;
     private JPanel painelSelecionarLocalParaTransporte;
+    private DadosAplicacao dadosAplicacao;
 
     public TransporteEspecifico(String title){
         super(title);
@@ -20,6 +22,14 @@ public class TransporteEspecifico extends JFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
         setLocationRelativeTo(null);
+
+        cbSelecionarLocalParaTransporte.setModel(new DefaultComboBoxModel<>(Local.values()));
+        LinkedList<Veiculo> veiculos = dadosAplicacao.INSTANCIA.getVeiculos();
+        for (Veiculo veiculo : veiculos) {
+            String[] veiculosMatriculas = {veiculo.getMatricula()};
+            String aux = veiculosMatriculas[0];
+            cbSelecionarVeiculo.addItem(aux);
+        }
 
         cbSelecionarVeiculo.addActionListener(this::cbSelecionarVeiculoActionPerformed);
         cbSelecionarLocalParaTransporte.addActionListener(this::cbSelecionarLocalParaTransporteActionPerformed);
