@@ -5,22 +5,23 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
+
 public enum DadosAplicacao implements Serializable{
     INSTANCIA;
     private LinkedList<Cliente> clientes;
-    private LinkedList<Evento> eventos;
-    private LinkedList<Peca> pecas;
-    private LinkedList<PedidoPeca> pedidosPecas;
+    private LinkedList<Veiculo> veiculos;
 
     DadosAplicacao(){
         clientes = new LinkedList<>();
-        eventos = new LinkedList<>();
-        pecas = new LinkedList<>();
-        pedidosPecas = new LinkedList<>();
+        veiculos = new LinkedList<>();
     }
 
     public LinkedList<Cliente> getClientes(){
-        return clientes;
+    return clientes;
+    }
+
+    public LinkedList<Veiculo> getVeiculos() {
+        return veiculos;
     }
 
     public void registarCliente(Cliente cliente){
@@ -37,55 +38,14 @@ public enum DadosAplicacao implements Serializable{
         clientes.remove(cliente);
     }
 
-    public LinkedList<Evento> getEventos(){
-        return eventos;
-    }
-
-    public void registarEvento(Evento evento){
-     if(evento == null || eventos.contains(evento)){
-         return;
-     }
-
-     eventos.add(evento);
-    }
-
-    public void cancelarEvento(Evento evento){
-        if(evento == null || !eventos.contains(evento)){
+    public void registarVeiculo(Veiculo veiculo){
+        if (veiculo == null || veiculos.contains(veiculo)){
             return;
         }
-
-        eventos.remove(evento);
+        veiculos.add(veiculo);
     }
 
-    public LinkedList<Peca> getPecas(){
-        return pecas;
-    }
 
-    public void registarPeca(Peca peca){
-        if(peca == null || pecas.contains(peca)){
-            return;
-        }
 
-        pecas.add(peca);
-    }
 
-    public LinkedList<PedidoPeca> getPedidosPecas(){
-        return pedidosPecas;
-    }
-
-    public void registarPedidoPeca(PedidoPeca pedidoPeca){
-        if(pedidoPeca == null || pedidosPecas.contains(pedidoPeca)){
-            return;
-        }
-
-        pedidosPecas.add(pedidoPeca);
-    }
-
-    public void removerPedidoPeca(PedidoPeca pedidoPeca){
-        if(pedidoPeca == null || !pedidosPecas.contains(pedidoPeca)){
-            return;
-        }
-
-        pedidosPecas.remove(pedidoPeca);
-    }
 }
