@@ -31,9 +31,7 @@ public class MenuPrincipal extends JFrame {
         btnMenuEventos.addActionListener(this::btnMenuEventosActionPerformed);
         btnMenuTransacao.addActionListener(this::btnMenuTransacaoActionPerformed);
         btnMenuVeiculos.addActionListener(this::btnMenuVeiculosActionPerformed);
-        /*
         btnMenuPecas.addActionListener(this::btnMenuPecasActionPerformed);
-    */
     }
 
 
@@ -56,16 +54,10 @@ public class MenuPrincipal extends JFrame {
     private void btnMenuVeiculosActionPerformed(ActionEvent e){
         new MenuVeiculos("Menu Veículos");
     }
-/*
-    private void btnMenuV(ActionEvent e){
-        new MenuAtletas("Menu Atletas");
-    }
 
-    private void btnMenuEventosActionPerformed(ActionEvent e){
-        new MenuEventos("Menu Eventos");
+    private void btnMenuPecasActionPerformed(ActionEvent e) {
+        new MenuPecas("Menu Peças");
     }
-
-*/
 
     public static void main(String[] args) {
         new MenuPrincipal("AutoSell").setVisible(true);

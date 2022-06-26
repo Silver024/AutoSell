@@ -10,10 +10,16 @@ public enum DadosAplicacao implements Serializable{
     INSTANCIA;
     private LinkedList<Cliente> clientes;
     private LinkedList<Veiculo> veiculos;
+    private LinkedList<Evento> eventos;
+    private LinkedList<Peca> pecas;
+    private LinkedList<PedidoPeca> pedidosPecas;
 
     DadosAplicacao(){
         clientes = new LinkedList<>();
         veiculos = new LinkedList<>();
+        eventos = new LinkedList<>();
+        pecas = new LinkedList<>();
+        pedidosPecas = new LinkedList<>();
     }
 
     public LinkedList<Cliente> getClientes(){
@@ -45,7 +51,55 @@ public enum DadosAplicacao implements Serializable{
         veiculos.add(veiculo);
     }
 
+    public LinkedList<Evento> getEventos(){
+        return eventos;
+    }
 
+    public void registarEvento(Evento evento){
+        if(evento == null || eventos.contains(evento)){
+            return;
+        }
 
+        eventos.add(evento);
+    }
 
+    public void cancelarEvento(Evento evento){
+        if(evento == null || !eventos.contains(evento)){
+            return;
+        }
+
+        eventos.remove(evento);
+    }
+
+    public LinkedList<Peca> getPecas(){
+        return pecas;
+    }
+
+    public void registarPeca(Peca peca){
+        if(peca == null || pecas.contains(peca)){
+            return;
+        }
+
+        pecas.add(peca);
+    }
+
+    public LinkedList<PedidoPeca> getPedidosPecas(){
+        return pedidosPecas;
+    }
+
+    public void registarPedidoPeca(PedidoPeca pedidoPeca){
+        if(pedidoPeca == null || pedidosPecas.contains(pedidoPeca)){
+            return;
+        }
+
+        pedidosPecas.add(pedidoPeca);
+    }
+
+    public void removerPedidoPeca(PedidoPeca pedidoPeca){
+        if(pedidoPeca == null || !pedidosPecas.contains(pedidoPeca)){
+            return;
+        }
+
+        pedidosPecas.remove(pedidoPeca);
+    }
 }

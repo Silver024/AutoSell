@@ -1,54 +1,46 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedList;
 
-public class AlterarEvento extends JFrame {
-    private JPanel painelAlterarEvento;
+public class AlterarEventoDecorrer extends JFrame {
+    private JPanel painelAlterarEventoDecorrer;
     private JPanel painelSelecionarEvento;
     private JComboBox cbSelecionarEvento;
     private JPanel painelTabela;
     private JTable tabelaAlterarEvento;
     private JPanel painelAlterarDados;
-    private JTextField textFieldNome;
-    private JTextField textFieldDataInicio;
     private JTextField textFieldDataFim;
-    private JTextField textFieldLocal;
     private JPanel painelVeiculos;
+    private JButton btnTransporteEspecifico;
     private JPanel painelBotoes;
     private JButton btnGuardar;
     private JButton btnCancelar;
-    private JButton btnTransporteEspecifico;
-    private JComboBox cbSelecionarLocal;
-    private JComboBox cbSelecionarVeiculos;
     private JComboBox cbSelecionarLocalTransporte;
+    private JComboBox cbSelecionarVeiculos;
 
-    private Evento evento;
     private DadosAplicacao dadosAplicacao;
 
-    public AlterarEvento(String title){
+    public AlterarEventoDecorrer(String title){
         super(title);
-        setContentPane(painelAlterarEvento);
+        setContentPane(painelAlterarEventoDecorrer);
         pack();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
         setLocationRelativeTo(null);
 
-        cbSelecionarLocal.setModel(new DefaultComboBoxModel<>(Local.values()));
-
         LinkedList<Evento> eventos = dadosAplicacao.INSTANCIA.getEventos();
 
-        for (Evento evento : eventos) {
-            String[] eventos_nomes = {evento.getNome()};
-            String aux = eventos_nomes[0];
-            cbSelecionarEvento.addItem(aux);
-        }
+        //Falta verificação para só aparecer eventos que já tenham começado, ou seja, com sysDate > dataInicio
 
-        cbSelecionarLocal.setModel(new DefaultComboBoxModel<>(Local.values()));
         cbSelecionarLocalTransporte.setModel(new DefaultComboBoxModel<>(Local.values()));
         LinkedList<Veiculo> veiculos = dadosAplicacao.INSTANCIA.getVeiculos();
         for (Veiculo veiculo : veiculos) {
@@ -57,17 +49,24 @@ public class AlterarEvento extends JFrame {
             cbSelecionarVeiculos.addItem(aux);
         }
 
+        for (Evento evento : eventos) {
+            String[] eventos_nomes = {evento.getNome()};
+            String aux = eventos_nomes[0];
+            cbSelecionarEvento.addItem(aux);
+        }
+
+
         btnTransporteEspecifico.addActionListener(this::btnTransporteEspecificoActionPerformed);
         btnGuardar.addActionListener(this::btnGuardarActionPerformed);
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
-        cbSelecionarEvento.addActionListener(this::cbAlterarEventoActionPerformed);
+        cbSelecionarEvento.addActionListener(this::cbSelecionarEventoActionPerformed);
     }
 
     private void btnTransporteEspecificoActionPerformed(ActionEvent actionEvent) {
         new TransporteEspecifico("Alterar Transporte Especifico");
     }
 
-    private void cbAlterarEventoActionPerformed(ActionEvent actionEvent) {
+    private void cbSelecionarEventoActionPerformed(ActionEvent actionEvent) {
         pack();
         setVisible(true);
 
@@ -75,6 +74,29 @@ public class AlterarEvento extends JFrame {
         Object evento_selecionado = cbSelecionarEvento.getSelectedItem();
         for (Evento evento : eventos) {
             if((evento.getNome()).equals(evento_selecionado)) {
+                //Validar as datas - Pode faltar verificar se a dataInicio > dataFim
+                String dateFormat = "dd/MM/uuuu";
+                DateTimeFormatter dateTimeFormatter = DateTimeFormatter
+                        .ofPattern(dateFormat)
+                        .withResolverStyle(ResolverStyle.STRICT);
+
+                DateFormat dateFormater = new SimpleDateFormat(dateFormat);
+
+                Date atual = Calendar.getInstance().getTime();
+
+                String dataAtual = dateFormater.format(atual);
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/uuuu");
+
+                try {
+                    if(sdf.parse(dataAtual).before(sdf.parse(evento.getDataInicio()))){
+                        JOptionPane.showMessageDialog(null,"Data Inicio '"+ evento.getDataInicio() +"' inválida. O evento ainda não começou", "Erro", JOptionPane.INFORMATION_MESSAGE);
+                        return;
+                    }
+                } catch (Exception exception){
+                    JOptionPane.showMessageDialog(null,"Erro ão verificar se as datas são válidas!", "Erro", JOptionPane.INFORMATION_MESSAGE);
+                    return;
+                }
+
                 criarTabela(evento);
                 //break;
             }
@@ -86,22 +108,6 @@ public class AlterarEvento extends JFrame {
         String evento_selecionado = (String) cbSelecionarEvento.getSelectedItem();
         for (Evento evento : eventos) {
             if((evento.getNome()).equals(evento_selecionado)) {
-                if(!textFieldNome.getText().isEmpty()){
-                    evento.setNome(textFieldNome.getText());
-                }
-                if(!textFieldDataInicio.getText().isEmpty()){
-                    String dateFormat = "dd/MM/uuuu";
-                    DateTimeFormatter dateTimeFormatter = DateTimeFormatter
-                            .ofPattern(dateFormat)
-                            .withResolverStyle(ResolverStyle.STRICT);
-                    try {
-                        LocalDate date = LocalDate.parse(textFieldDataInicio.getText(), dateTimeFormatter);
-                    } catch (DateTimeParseException pe) {
-                        JOptionPane.showMessageDialog(null,"Data de nascimento: '"+ textFieldDataInicio.getText() +"' inválido", "Erro", JOptionPane.INFORMATION_MESSAGE);
-                        return;
-                    }
-                    evento.setDataInicio(textFieldDataInicio.getText());
-                }
                 if(!textFieldDataFim.getText().isEmpty()){
                     String dateFormat = "dd/MM/uuuu";
                     DateTimeFormatter dateTimeFormatter = DateTimeFormatter
@@ -115,8 +121,6 @@ public class AlterarEvento extends JFrame {
                     }
                     evento.setDataFim(textFieldDataFim.getText());
                 }
-                evento.setLocal(cbSelecionarLocal.getSelectedItem().toString());
-
                 JOptionPane.showMessageDialog(null,"Evento '" + evento_selecionado + "' alterado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
             }
         }
