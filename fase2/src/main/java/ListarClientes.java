@@ -12,7 +12,7 @@ public class ListarClientes extends JFrame {
     private DadosAplicacao dadosAplicacao;
 
     public ListarClientes(String title, DadosAplicacao dadosAplicacao) {
-        super(title);
+
 
 
         LinkedList<Cliente> clientes = dadosAplicacao.INSTANCIA.getClientes();

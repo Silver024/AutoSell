@@ -31,6 +31,8 @@ public class RegistarCliente extends JFrame {
         setVisible(true);
         setLocationRelativeTo(null);
 
+        //dadosAplicacao = new DadosAplicacao();
+
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
         btnGuardar.addActionListener(this::btnGuardarActionPerformed);
     }
@@ -56,13 +58,11 @@ public class RegistarCliente extends JFrame {
         String estadoProfissional = textFieldEstadoProfissional.getText();
         String email = textFieldEmail.getText();
 
-        //verify date format
+//verify date format
         String dateFormat = "dd/MM/uuuu";
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter
                 .ofPattern(dateFormat)
                 .withResolverStyle(ResolverStyle.STRICT);
-
-
         try {
             LocalDate date = LocalDate.parse(dataNascimento, dateTimeFormatter);
         } catch (DateTimeParseException e) {

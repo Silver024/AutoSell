@@ -5,7 +5,7 @@ public class MenuPrincipal extends JFrame {
     private JPanel contentPane;
     private JButton btnSair;
     private JButton btnMenuVeiculos;
-    private JButton btnMenuTransacoes;
+    private JButton btnMenuTransacao;
     private JButton btnMenuClientes;
     private JButton btnMenuEventos;
     private JButton btnMenuPecas;
@@ -29,15 +29,9 @@ public class MenuPrincipal extends JFrame {
         //Menus
         btnMenuClientes.addActionListener(this::btnMenuClientesActionPerformed);
         btnMenuEventos.addActionListener(this::btnMenuEventosActionPerformed);
+        btnMenuTransacao.addActionListener(this::btnMenuTransacaoActionPerformed);
+        btnMenuVeiculos.addActionListener(this::btnMenuVeiculosActionPerformed);
         btnMenuPecas.addActionListener(this::btnMenuPecasActionPerformed);
-       /*
-        btnMenuTransacoes.addActionListener(this::btnMenuTransacoesActionPerformed);
-        btnMenuPecas.addActionListener(this::btnMenuPecasActionPerformed);
-    */
-    }
-
-    private void btnMenuPecasActionPerformed(ActionEvent actionEvent) {
-        new MenuPecas("Menu Peças");
     }
 
 
@@ -52,20 +46,18 @@ public class MenuPrincipal extends JFrame {
     private void btnMenuEventosActionPerformed(ActionEvent e){
         new MenuEventos("Menu Eventos");
     }
-/*
-    private void btnMenuProvasActionPerformed(ActionEvent e){
-        new MenuProva();
+
+    private void btnMenuTransacaoActionPerformed(ActionEvent e){
+        new MenuTransacao("Menu Transacao");
     }
 
-    private void btnMenuAtletaActionPerformed(ActionEvent e){
-        new MenuAtletas("Menu Atletas");
+    private void btnMenuVeiculosActionPerformed(ActionEvent e){
+        new MenuVeiculos("Menu Veículos");
     }
 
-    private void btnMenuEventosActionPerformed(ActionEvent e){
-        new MenuEventos("Menu Eventos");
+    private void btnMenuPecasActionPerformed(ActionEvent e) {
+        new MenuPecas("Menu Peças");
     }
-
-*/
 
     public static void main(String[] args) {
         new MenuPrincipal("AutoSell").setVisible(true);

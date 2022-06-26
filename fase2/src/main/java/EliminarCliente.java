@@ -62,8 +62,8 @@ public class EliminarCliente extends JFrame {
     }
 
     private void cbEliminarActionPerformed(ActionEvent e){
-        pack();
-        setVisible(true);
+    pack();
+    setVisible(true);
 
         LinkedList<Cliente> clientes = dadosAplicacao.INSTANCIA.getClientes();
         Object cliente_selecionado = cbEliminar.getSelectedItem();
