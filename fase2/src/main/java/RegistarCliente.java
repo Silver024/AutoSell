@@ -61,6 +61,8 @@ public class RegistarCliente extends JFrame {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter
                 .ofPattern(dateFormat)
                 .withResolverStyle(ResolverStyle.STRICT);
+
+
         try {
             LocalDate date = LocalDate.parse(dataNascimento, dateTimeFormatter);
         } catch (DateTimeParseException e) {

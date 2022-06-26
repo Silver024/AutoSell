@@ -1,9 +1,23 @@
 import java.io.Serializable;
 
 public class Veiculo implements Serializable {
-    private String matricula, marca, modelo, garantia, disponibilidade, donoAnterior, nrDonos, mesRegisto, anoRegisto, quilometros, cilindrada, potencia, cor, segmento, nrPortas, condicao;
+    private String matricula;
+    private String marca;
+    private String modelo;
+    private String garantia;
+    private String disponibilidade;
+    private String donoAnterior;
+    private String nrDonos;
+    private String registo;
+    private String quilometros;
+    private String cilindrada;
+    private String potencia;
+    private String cor;
+    private String segmento;
+    private String nrPortas;
+    private String condicao;
 
-    public Veiculo(String matricula, String marca, String modelo, String garantia, String disponibilidade, String donoAnterior, String nrDonos, String mesRegisto, String anoRegisto, String quilometros, String cilindrada, String potencia, String cor, String segmento, String nrPortas, String condicao){
+    public Veiculo(String matricula, String marca, String modelo, String garantia, String disponibilidade, String donoAnterior, String nrDonos, String registo, String quilometros, String cilindrada, String potencia, String cor, String segmento, String nrPortas, String condicao){
     this.matricula = matricula;
     this.marca = marca;
     this.modelo = modelo;
@@ -11,8 +25,7 @@ public class Veiculo implements Serializable {
     this.disponibilidade = disponibilidade;
     this.donoAnterior = donoAnterior;
     this.nrDonos = nrDonos;
-    this.mesRegisto = mesRegisto;
-    this.anoRegisto = anoRegisto;
+    this.registo = registo;
     this.quilometros = quilometros;
     this.cilindrada = cilindrada;
     this.potencia = potencia;
@@ -50,12 +63,8 @@ public class Veiculo implements Serializable {
         return nrDonos;
     }
 
-    public String getMesRegisto() {
-        return mesRegisto;
-    }
-
-    public String getAnoRegisto() {
-        return anoRegisto;
+    public String getRegisto() {
+        return registo;
     }
 
     public String getQuilometros() {
@@ -114,12 +123,8 @@ public class Veiculo implements Serializable {
         this.nrDonos = nrDonos;
     }
 
-    public void setMesRegisto(String mesRegisto) {
-        this.mesRegisto = mesRegisto;
-    }
-
-    public void setAnoRegisto(String anoRegisto) {
-        this.anoRegisto = anoRegisto;
+    public void setRegisto(String registo) {
+        this.registo = registo;
     }
 
     public void setQuilometros(String quilometros) {
