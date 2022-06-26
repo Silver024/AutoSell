@@ -37,9 +37,24 @@ public class PedidosPecas extends JFrame {
             cbSelecionarPedido.addItem(aux);
         }
 
+        cbSelecionarPedido.addActionListener(this::cbSelecionarPedidoActionPerformed);
         btnAceitarPedido.addActionListener(this::btnAceitarPedidoActionPerformed);
         btnRecusarPedido.addActionListener(this::btnRecusarPedidoActionPerformed);
         btnVoltar.addActionListener(this::btnVoltarActionPerformed);
+    }
+
+    private void cbSelecionarPedidoActionPerformed(ActionEvent actionEvent) {
+        String nomePedido = cbSelecionarPedido.getSelectedItem().toString();
+
+        LinkedList<PedidoPeca> pedidoPecas = dadosAplicacao.INSTANCIA.getPedidosPecas();
+        for(PedidoPeca pedidoPeca : pedidoPecas){
+            if(pedidoPeca.getNome().equals(nomePedido)){
+                textFieldTipo.setText(pedidoPeca.getTipo());
+                textFieldNome.setText(pedidoPeca.getPeca().getNome());
+                textFieldQuantidadePedida.setText(String.valueOf(pedidoPeca.getQuantidadePedida()));
+                textFieldQuantidadeDisponivel.setText(String.valueOf(pedidoPeca.getPeca().getQuantidade()));
+            }
+        }
     }
 
     private void btnAceitarPedidoActionPerformed(ActionEvent actionEvent) {
@@ -48,6 +63,11 @@ public class PedidosPecas extends JFrame {
         LinkedList<PedidoPeca> pedidosPecas = dadosAplicacao.INSTANCIA.getPedidosPecas();
         for(PedidoPeca pedidoPeca : pedidosPecas){
             if((pedidoPeca.getNome()).equals(nomePedido)){
+                if(pedidoPeca.getQuantidadePedida() > pedidoPeca.getPeca().getQuantidade()){
+                    JOptionPane.showMessageDialog(null, "Não é possivel aceitar o pedido! Não existe stock suficiente");
+                    break;
+                }
+
                 dadosAplicacao.INSTANCIA.removerPedidoPeca(pedidoPeca);
                 JOptionPane.showMessageDialog(null, "Pedido aceite!");
                 break;

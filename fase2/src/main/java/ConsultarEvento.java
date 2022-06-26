@@ -61,6 +61,7 @@ public class ConsultarEvento extends JFrame{
         DefaultTableModel modelo = new DefaultTableModel(cabecalhos,0);
 
         Object[] objects = {evento.getNome(), evento.getDataInicio(), evento.getDataFim(), evento.getLocal()};
+        modelo.addRow(cabecalhos);
         modelo.addRow(objects);
 
         tabelaConsultarEvento.setModel(modelo);

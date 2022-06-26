@@ -2,14 +2,14 @@ public class PedidoPeca {
     private String local; //A quem se pede a peça
     private String tipo;
     private Peca peca;
-    private int quantidade;
+    private int quantidadePedida;
     private String nome;
 
-    public PedidoPeca(String local, String tipo, Peca peca, int quantidade, String nome){
+    public PedidoPeca(String local, String tipo, Peca peca, int quantidadePedida, String nome){
         this.local = local;
         this.tipo = tipo;
         this.peca = peca;
-        this.quantidade = quantidade;
+        this.quantidadePedida = quantidadePedida;
         this.nome = nome;
     }
 
@@ -24,8 +24,8 @@ public class PedidoPeca {
         return peca;
     }
 
-    public int getQuantidade() {
-        return quantidade;
+    public int getQuantidadePedida() {
+        return quantidadePedida;
     }
 
     public void setLocal(String local) {
@@ -40,8 +40,8 @@ public class PedidoPeca {
         this.peca = peca;
     }
 
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
+    public void setQuantidadePedida(int quantidadePedida) {
+        this.quantidadePedida = quantidadePedida;
     }
 
     public String getNome() {

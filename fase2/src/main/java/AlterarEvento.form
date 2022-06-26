@@ -140,22 +140,6 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="27905" class="javax.swing.JTextField" binding="textFieldSelecionarVeiculo">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="-1"/>
-              </grid>
-            </constraints>
-            <properties/>
-          </component>
-          <component id="25350" class="javax.swing.JTextField" binding="textFieldTransportarVeiculo">
-            <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="-1"/>
-              </grid>
-            </constraints>
-            <properties/>
-          </component>
           <component id="56627" class="javax.swing.JButton" binding="btnTransporteEspecifico">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -163,6 +147,18 @@
             <properties>
               <text value="Transporte Específico"/>
             </properties>
+          </component>
+          <component id="512f0" class="javax.swing.JComboBox" binding="cbSelecionarVeiculos">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="4c6f" class="javax.swing.JComboBox" binding="cbSelecionarLocalTransporte">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
           </component>
         </children>
       </grid>

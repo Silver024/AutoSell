@@ -19,13 +19,13 @@ public class AlterarEvento extends JFrame {
     private JTextField textFieldDataFim;
     private JTextField textFieldLocal;
     private JPanel painelVeiculos;
-    private JTextField textFieldSelecionarVeiculo;
-    private JTextField textFieldTransportarVeiculo;
     private JPanel painelBotoes;
     private JButton btnGuardar;
     private JButton btnCancelar;
     private JButton btnTransporteEspecifico;
     private JComboBox cbSelecionarLocal;
+    private JComboBox cbSelecionarVeiculos;
+    private JComboBox cbSelecionarLocalTransporte;
 
     private Evento evento;
     private DadosAplicacao dadosAplicacao;
@@ -46,6 +46,15 @@ public class AlterarEvento extends JFrame {
             String[] eventos_nomes = {evento.getNome()};
             String aux = eventos_nomes[0];
             cbSelecionarEvento.addItem(aux);
+        }
+
+        cbSelecionarLocal.setModel(new DefaultComboBoxModel<>(Local.values()));
+        cbSelecionarLocalTransporte.setModel(new DefaultComboBoxModel<>(Local.values()));
+        LinkedList<Veiculo> veiculos = dadosAplicacao.INSTANCIA.getVeiculos();
+        for (Veiculo veiculo : veiculos) {
+            String[] veiculosMatriculas = {veiculo.getMatricula()};
+            String aux = veiculosMatriculas[0];
+            cbSelecionarVeiculos.addItem(aux);
         }
 
         btnTransporteEspecifico.addActionListener(this::btnTransporteEspecificoActionPerformed);
