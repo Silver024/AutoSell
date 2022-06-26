@@ -56,7 +56,9 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <toolTipText value="dd/mm/yyyy"/>
+            </properties>
           </component>
           <component id="afb01" class="javax.swing.JLabel">
             <constraints>
@@ -72,7 +74,9 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <toolTipText value="dd/mm/yyyy"/>
+            </properties>
           </component>
           <component id="d2c79" class="javax.swing.JLabel">
             <constraints>
@@ -82,11 +86,9 @@
               <text value="Local:"/>
             </properties>
           </component>
-          <component id="1c89" class="javax.swing.JTextField" binding="textFieldLocal">
+          <component id="f1729" class="javax.swing.JComboBox" binding="cbSelecionarLocal">
             <constraints>
-              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="-1"/>
-              </grid>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties/>
           </component>

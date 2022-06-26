@@ -1,6 +1,7 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
+import java.util.LinkedList;
 
 public class CancelarEvento extends JFrame {
     private JPanel painelCancelarEvento;
@@ -14,6 +15,8 @@ public class CancelarEvento extends JFrame {
     private JPanel painelTabela;
     private JTable tabelaListaEvento;
 
+    private DadosAplicacao dadosAplicacao;
+
     public CancelarEvento(String title){
         super(title);
 
@@ -23,22 +26,45 @@ public class CancelarEvento extends JFrame {
         setVisible(true);
         setLocationRelativeTo(null);
 
-        /* LinkedList<Cliente> clientes = dadosAplicacao.INSTANCIA.getClientes();
+        LinkedList<Evento> eventos = dadosAplicacao.INSTANCIA.getEventos();
 
-//Show name of clients in combobox
-        for (Cliente cliente : clientes) {
-            String[] clientes_nomes = {cliente.getNome()};
-            String aux = clientes_nomes[0];
-            cbEliminar.addItem(aux);
+        for (Evento evento : eventos) {
+            String[] eventos_nomes = {evento.getNome()};
+            String aux = eventos_nomes[0];
+            cbSelecionarEvento.addItem(aux);
         }
-*/
 
+        cbSelecionarEvento.addActionListener(this::cbSelecionarEventoActionPerformed);
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
         btnVoltar.addActionListener(this::btnVoltarActionPerformed);
     }
 
-    private void btnCancelarActionPerformed(ActionEvent actionEvent) {
+    private void cbSelecionarEventoActionPerformed(ActionEvent actionEvent) {
+        pack();
+        setVisible(true);
 
+        LinkedList<Evento> eventos = dadosAplicacao.INSTANCIA.getEventos();
+        Object evento_selecionado = cbSelecionarEvento.getSelectedItem();
+        for (Evento evento : eventos) {
+            if((evento.getNome()).equals(evento_selecionado)) {
+                criarTabela(evento);
+                //break;
+            }
+        }
+    }
+
+    private void btnCancelarActionPerformed(ActionEvent actionEvent) {
+        LinkedList<Evento> eventos = dadosAplicacao.INSTANCIA.getEventos();
+        String evento_selecionado = (String) cbSelecionarEvento.getSelectedItem();
+        for (Evento evento : eventos) {
+            if((evento.getNome()).equals(evento_selecionado)) {
+                DadosAplicacao.INSTANCIA.cancelarEvento(evento);
+                JOptionPane.showMessageDialog(null,"Evento '" + evento_selecionado + "' cancelado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                break;
+            }
+        }
+        setVisible(false);
+        toBack();
     }
 
     private void btnVoltarActionPerformed(ActionEvent actionEvent) {
@@ -46,19 +72,19 @@ public class CancelarEvento extends JFrame {
         toBack();
     }
 
-    /*private void criarTabela(Cliente cliente) {
+    private void criarTabela(Evento evento) {
 
-        String[] cabecalhos = {"Nome", "Morada", "Género", "Data de Nascimento", "Contacto", "Email", "NIF", "Estado Profissional"};
+        String[] cabecalhos = {"Nome", "Data Inicio", "Data Fim", "Local"};
 
         DefaultTableModel modelo = new DefaultTableModel(cabecalhos,0);
 
 
-        Object[] objects = {cliente.getNome(), cliente.getMorada(), cliente.getGenero(), cliente.getDataNascimento(), cliente.getContacto(), cliente.getEmail(), cliente.getnif(), cliente.getEstadoProfissional()};
+        Object[] objects = {evento.getNome(), evento.getDataInicio(), evento.getDataFim(), evento.getLocal()};
         modelo.addRow(objects);
 
 
-        ListaClienteEliminar.setModel(modelo);
-        ListaClienteEliminar.setEnabled(false);
-        ListaClienteEliminar.getTableHeader().setReorderingAllowed(false);
-    }*/
+        tabelaListaEvento.setModel(modelo);
+        tabelaListaEvento.setEnabled(false);
+        tabelaListaEvento.getTableHeader().setReorderingAllowed(false);
+    }
 }

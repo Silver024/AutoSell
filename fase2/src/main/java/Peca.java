@@ -17,16 +17,8 @@ public class Peca implements Serializable {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
     public String getLocal() {
         return local;
-    }
-
-    public void setLocal(String local) {
-        this.local = local;
     }
 
     public String getNome() {
@@ -43,5 +35,13 @@ public class Peca implements Serializable {
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public void setLocal(String local) {
+        this.local = local;
     }
 }

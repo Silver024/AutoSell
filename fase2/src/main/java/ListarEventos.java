@@ -13,11 +13,13 @@ public class ListarEventos extends JFrame {
     private JPanel painelVoltar;
     private JPanel painelBtnVoltar;
 
+    private DadosAplicacao dadosAplicacao;
+
     public ListarEventos(String title){
         super(title);
 
-        /*LinkedList<Cliente> clientes = dadosAplicacao.INSTANCIA.getClientes();
-        criarTabela(clientes);*/
+        LinkedList<Evento> eventos = dadosAplicacao.INSTANCIA.getEventos();
+        criarTabela(eventos);
 
         btnVoltar.addActionListener(this::btnVoltarButtonActionPerformed);
 
@@ -28,21 +30,21 @@ public class ListarEventos extends JFrame {
         setLocationRelativeTo(null);
     }
 
-    /*private void criarTabela(LinkedList<Cliente> clientes) {
+    private void criarTabela(LinkedList<Evento> eventos) {
 
-        String[] cabecalhos = {"Nome", "Morada", "Género", "Data de Nascimento", "Contacto", "Email", "NIF", "Estado Profissional"};
+        String[] cabecalhos = {"Nome", "Data Inicio", "Data Fim", "Local"};
 
         DefaultTableModel modelo = new DefaultTableModel(cabecalhos,0);
 
-        for (Cliente cliente : clientes) {
-            Object[] objects = {cliente.getNome(), cliente.getMorada(), cliente.getGenero(), cliente.getDataNascimento(), cliente.getContacto(), cliente.getEmail(), cliente.getnif(), cliente.getEstadoProfissional()};
+        for (Evento evento : eventos) {
+            Object[] objects = {evento.getNome(), evento.getDataInicio(), evento.getDataFim(), evento.getLocal()};
             modelo.addRow(objects);
         }
 
-        listaClientes.setModel(modelo);
-        listaClientes.setEnabled(false);
-        listaClientes.getTableHeader().setReorderingAllowed(false);
-    }*/
+        tabelaListaEventos.setModel(modelo);
+        tabelaListaEventos.setEnabled(false);
+        tabelaListaEventos.getTableHeader().setReorderingAllowed(false);
+    }
 
     private void btnVoltarButtonActionPerformed(ActionEvent actionEvent) {
         setVisible(false);

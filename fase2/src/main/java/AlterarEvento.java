@@ -1,6 +1,11 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
+import java.util.LinkedList;
 
 public class AlterarEvento extends JFrame {
     private JPanel painelAlterarEvento;
@@ -20,8 +25,10 @@ public class AlterarEvento extends JFrame {
     private JButton btnGuardar;
     private JButton btnCancelar;
     private JButton btnTransporteEspecifico;
+    private JComboBox cbSelecionarLocal;
 
     private Evento evento;
+    private DadosAplicacao dadosAplicacao;
 
     public AlterarEvento(String title){
         super(title);
@@ -31,16 +38,15 @@ public class AlterarEvento extends JFrame {
         setVisible(true);
         setLocationRelativeTo(null);
 
-    /* LinkedList<Evento>
-        LinkedList<Cliente> clientes = dadosAplicacao.INSTANCIA.getClientes();
+        cbSelecionarLocal.setModel(new DefaultComboBoxModel<>(Local.values()));
 
+        LinkedList<Evento> eventos = dadosAplicacao.INSTANCIA.getEventos();
 
-        for (Cliente cliente : clientes) {
-            String[] clientes_nomes = {cliente.getNome()};
-            String aux = clientes_nomes[0];
-            cbEditar.addItem(aux);
+        for (Evento evento : eventos) {
+            String[] eventos_nomes = {evento.getNome()};
+            String aux = eventos_nomes[0];
+            cbSelecionarEvento.addItem(aux);
         }
-    */
 
         btnTransporteEspecifico.addActionListener(this::btnTransporteEspecificoActionPerformed);
         btnGuardar.addActionListener(this::btnGuardarActionPerformed);
@@ -53,22 +59,58 @@ public class AlterarEvento extends JFrame {
     }
 
     private void cbAlterarEventoActionPerformed(ActionEvent actionEvent) {
-    /*
-            pack();
+        pack();
         setVisible(true);
 
-        LinkedList<Cliente> clientes = dadosAplicacao.INSTANCIA.getClientes();
-        Object cliente_selecionado = cbEditar.getSelectedItem();
-        for (Cliente cliente : clientes) {
-            if((cliente.getNome()).equals(cliente_selecionado)) {
-                criarTabela(cliente);
+        LinkedList<Evento> eventos = dadosAplicacao.INSTANCIA.getEventos();
+        Object evento_selecionado = cbSelecionarEvento.getSelectedItem();
+        for (Evento evento : eventos) {
+            if((evento.getNome()).equals(evento_selecionado)) {
+                criarTabela(evento);
                 //break;
             }
         }
-    */
     }
 
     private void btnGuardarActionPerformed(ActionEvent actionEvent) {
+        LinkedList<Evento> eventos = dadosAplicacao.INSTANCIA.getEventos();
+        String evento_selecionado = (String) cbSelecionarEvento.getSelectedItem();
+        for (Evento evento : eventos) {
+            if((evento.getNome()).equals(evento_selecionado)) {
+                if(!textFieldNome.getText().isEmpty()){
+                    evento.setNome(textFieldNome.getText());
+                }
+                if(!textFieldDataInicio.getText().isEmpty()){
+                    String dateFormat = "dd/MM/uuuu";
+                    DateTimeFormatter dateTimeFormatter = DateTimeFormatter
+                            .ofPattern(dateFormat)
+                            .withResolverStyle(ResolverStyle.STRICT);
+                    try {
+                        LocalDate date = LocalDate.parse(textFieldDataInicio.getText(), dateTimeFormatter);
+                    } catch (DateTimeParseException pe) {
+                        JOptionPane.showMessageDialog(null,"Data de nascimento: '"+ textFieldDataInicio.getText() +"' inválido", "Erro", JOptionPane.INFORMATION_MESSAGE);
+                        return;
+                    }
+                    evento.setDataInicio(textFieldDataInicio.getText());
+                }
+                if(!textFieldDataFim.getText().isEmpty()){
+                    String dateFormat = "dd/MM/uuuu";
+                    DateTimeFormatter dateTimeFormatter = DateTimeFormatter
+                            .ofPattern(dateFormat)
+                            .withResolverStyle(ResolverStyle.STRICT);
+                    try {
+                        LocalDate date = LocalDate.parse(textFieldDataFim.getText(), dateTimeFormatter);
+                    } catch (DateTimeParseException pe) {
+                        JOptionPane.showMessageDialog(null,"Data de nascimento: '"+ textFieldDataFim.getText() +"' inválido", "Erro", JOptionPane.INFORMATION_MESSAGE);
+                        return;
+                    }
+                    evento.setDataFim(textFieldDataFim.getText());
+                }
+                evento.setLocal(cbSelecionarLocal.getSelectedItem().toString());
+
+                JOptionPane.showMessageDialog(null,"Evento '" + evento_selecionado + "' alterado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
         setVisible(false);
         toBack();
     }
@@ -78,14 +120,14 @@ public class AlterarEvento extends JFrame {
         toBack();
     }
 
-    private void criarTabela(Cliente cliente) {
+    private void criarTabela(Evento evento) {
 
-        String[] cabecalhos = {"Nome", "DataInicio", "DataFim", "Local"};
+        String[] cabecalhos = {"Nome", "Data Inicio", "Data Fim", "Local"};
 
         DefaultTableModel modelo = new DefaultTableModel(cabecalhos,0);
 
 
-        Object[] objects = {cliente.getNome(), cliente.getMorada(), cliente.getGenero(), cliente.getDataNascimento(), cliente.getContacto(), cliente.getEmail(), cliente.getnif(), cliente.getEstadoProfissional()};
+        Object[] objects = {evento.getNome(), evento.getDataInicio(), evento.getDataFim(), evento.getLocal()};
         modelo.addRow(objects);
 
 

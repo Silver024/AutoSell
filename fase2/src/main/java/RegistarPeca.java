@@ -23,6 +23,10 @@ public class RegistarPeca extends JFrame {
         setVisible(true);
         setLocationRelativeTo(null);
 
+
+        cbSelecionarTipo.setModel(new DefaultComboBoxModel<>(TipoPeca.values()));
+        cbSelecionarLocal.setModel(new DefaultComboBoxModel<>(Local.values()));
+
         cbSelecionarTipo.addActionListener(this::cbSelecionarTipoActionPerformed);
         cbSelecionarLocal.addActionListener(this::cbSelecionarLocalActionPerformed);
         btnGuardar.addActionListener(this::btnGuardarActionPerformed);
@@ -38,11 +42,29 @@ public class RegistarPeca extends JFrame {
     }
 
     private void btnGuardarActionPerformed(ActionEvent actionEvent) {
-        //Falta código para guardar a peça
+        validarDados();
+        setVisible(false);
+        toBack();
     }
 
     private void btnCancelarActionPerformed(ActionEvent actionEvent) {
         setVisible(false);
         toBack();
+    }
+
+    private void validarDados(){
+        String nome = textFieldNome.getText();
+        String quantidade = textFieldQuantidade.getText();
+        String tipo = cbSelecionarTipo.getSelectedItem().toString();
+        String local = cbSelecionarLocal.getSelectedItem().toString();
+
+        if(nome.isEmpty()){
+            JOptionPane.showMessageDialog(null,"Nome: '"+ nome +"' inválido", "Erro", JOptionPane.INFORMATION_MESSAGE);
+        } else if(quantidade.isEmpty()){
+            JOptionPane.showMessageDialog(null,"Quantidade: '"+ quantidade +"' inválida", "Erro", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            DadosAplicacao.INSTANCIA.registarPeca(new Peca(tipo, local, nome, Integer.parseInt(quantidade)));
+            JOptionPane.showMessageDialog(null,"#" + quantidade + " peças '" + nome + "' do tipo '" + tipo + "'  registadas com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 }
