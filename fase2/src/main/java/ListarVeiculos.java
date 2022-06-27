@@ -13,7 +13,6 @@ public class ListarVeiculos extends JFrame {
     public ListarVeiculos(String title, DadosAplicacao dadosAplicacao) {
         super(title);
 
-
         LinkedList<Veiculo> veiculos = dadosAplicacao.INSTANCIA.getVeiculos();
         criarTabela(veiculos);
 

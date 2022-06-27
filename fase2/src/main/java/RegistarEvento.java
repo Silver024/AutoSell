@@ -24,6 +24,7 @@ public class RegistarEvento extends JFrame {
     private JComboBox cbSelecionarVeiculos;
     private JComboBox cbSelecionarLocalTransporte;
     private DadosAplicacao dadosAplicacao;
+    private Veiculo veiculoAdd;
 
     public RegistarEvento(String title){
         super(title);
@@ -66,7 +67,21 @@ public class RegistarEvento extends JFrame {
         String dataInicio = textFieldDataInicio.getText();
         String dataFim = textFieldDataFim.getText();
         String local = cbSelecionarLocal.getSelectedItem().toString();
-        //Falta veículos
+
+        //veiculos
+        String veiculoSelecionado = cbSelecionarVeiculos.getSelectedItem().toString();
+        LinkedList<Veiculo> veiculos = dadosAplicacao.INSTANCIA.getVeiculos();
+        for(Veiculo veiculo : veiculos){
+            String veiculoMatricula = veiculo.getMatricula();
+            if(veiculoMatricula.equals(veiculoSelecionado)){
+
+                veiculoAdd = new Veiculo(veiculo.getMatricula(), veiculo.getMarca(), veiculo.getModelo(), veiculo.getGarantia(), veiculo.getDisponibilidade(),
+                                         veiculo.getDonoAnterior(), veiculo.getNrDonos(), veiculo.getMesRegisto(), veiculo.getAnoRegisto(), veiculo.getQuilometros(),
+                                         veiculo.getCilindrada(), veiculo.getPotencia(), veiculo.getCor(), veiculo.getSegmento(), veiculo.getNrPortas(), veiculo.getCondicao()
+                );
+                break;
+            }
+        }
 
         //Validar as datas - Pode faltar verificar se a dataInicio > dataFim
         String dateFormat = "dd/MM/uuuu";
@@ -108,6 +123,13 @@ public class RegistarEvento extends JFrame {
             JOptionPane.showMessageDialog(null,"Data Fim: '"+ dataFim +"' inválida", "Erro", JOptionPane.INFORMATION_MESSAGE);
         } else {
             DadosAplicacao.INSTANCIA.registarEvento(new Evento(nome, dataInicio, dataFim, local));
+            LinkedList<Evento> eventos = dadosAplicacao.INSTANCIA.getEventos();
+            for(Evento evento : eventos){
+                String eventoNome = evento.getNome();
+                if(eventoNome.equals(nome)){
+                    DadosAplicacao.INSTANCIA.adicionarVeiculo(evento, veiculoAdd);
+                }
+            }
             JOptionPane.showMessageDialog(null,"Evento '" + nome + "' registado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
             //falta veículos
         }

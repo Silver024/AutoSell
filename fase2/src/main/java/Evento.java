@@ -1,16 +1,20 @@
+import javax.naming.LinkException;
 import java.io.Serializable;
+import java.util.LinkedList;
 
 public class Evento implements Serializable {
     private String nome;
     private String dataInicio;
     private String dataFim;
     private String local;
+    private LinkedList<Veiculo> veiculos;
 
     public Evento(String nome, String dataInicio, String dataFim, String local){
         this.nome = nome;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
         this.local = local;
+        veiculos = new LinkedList<>();
     }
 
     public String getNome() {
@@ -43,5 +47,13 @@ public class Evento implements Serializable {
 
     public void setLocal(String local) {
         this.local = local;
+    }
+
+    public LinkedList<Veiculo> getVeiculos() {
+        return veiculos;
+    }
+
+    public void setVeiculos(LinkedList<Veiculo> veiculos) {
+        this.veiculos = veiculos;
     }
 }

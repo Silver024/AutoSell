@@ -3,7 +3,7 @@
   <grid id="cbd77" binding="contentPane" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="10" left="10" bottom="10" right="10"/>
     <constraints>
-      <xy x="48" y="54" width="860" height="483"/>
+      <xy x="48" y="54" width="860" height="488"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -83,20 +83,10 @@
                           </grid>
                         </constraints>
                         <properties>
+                          <editable value="false"/>
                           <focusTraversalPolicyProvider value="false"/>
                           <text value=""/>
                           <toolTipText value="dd/mm/yyyy"/>
-                        </properties>
-                      </component>
-                      <component id="6b2e4" class="javax.swing.JTextField" binding="textFieldDonoAnterior">
-                        <constraints>
-                          <grid row="5" column="1" row-span="1" col-span="8" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="-1"/>
-                          </grid>
-                        </constraints>
-                        <properties>
-                          <text value=""/>
-                          <toolTipText value="Inserir apenas digitos"/>
                         </properties>
                       </component>
                       <component id="35501" class="javax.swing.JTextField" binding="textFieldMesRegisto">
@@ -106,6 +96,7 @@
                           </grid>
                         </constraints>
                         <properties>
+                          <editable value="false"/>
                           <text value=""/>
                           <toolTipText value="Inserir apenas digitos"/>
                         </properties>
@@ -160,7 +151,9 @@
                             <preferred-size width="150" height="35"/>
                           </grid>
                         </constraints>
-                        <properties/>
+                        <properties>
+                          <editable value="false"/>
+                        </properties>
                       </component>
                       <component id="10224" class="javax.swing.JLabel">
                         <constraints>
@@ -176,7 +169,9 @@
                             <preferred-size width="150" height="-1"/>
                           </grid>
                         </constraints>
-                        <properties/>
+                        <properties>
+                          <editable value="false"/>
+                        </properties>
                       </component>
                       <component id="c79e5" class="javax.swing.JLabel">
                         <constraints>
@@ -193,6 +188,7 @@
                           </grid>
                         </constraints>
                         <properties>
+                          <editable value="false"/>
                           <text value=""/>
                           <toolTipText value="Inserir apenas digitos"/>
                         </properties>
@@ -212,6 +208,7 @@
                           </grid>
                         </constraints>
                         <properties>
+                          <editable value="false"/>
                           <text value=""/>
                           <toolTipText value="Inserir apenas digitos"/>
                         </properties>
@@ -231,6 +228,7 @@
                           </grid>
                         </constraints>
                         <properties>
+                          <editable value="false"/>
                           <text value=""/>
                           <toolTipText value="Inserir apenas digitos"/>
                         </properties>
@@ -250,6 +248,7 @@
                           </grid>
                         </constraints>
                         <properties>
+                          <editable value="false"/>
                           <text value=""/>
                           <toolTipText value="Inserir apenas digitos"/>
                         </properties>
@@ -268,7 +267,9 @@
                             <preferred-size width="150" height="-1"/>
                           </grid>
                         </constraints>
-                        <properties/>
+                        <properties>
+                          <editable value="false"/>
+                        </properties>
                       </component>
                       <component id="c432a" class="javax.swing.JLabel">
                         <constraints>
@@ -293,6 +294,7 @@
                           </grid>
                         </constraints>
                         <properties>
+                          <editable value="false"/>
                           <text value=""/>
                           <toolTipText value="Inserir apenas digitos"/>
                         </properties>
@@ -304,6 +306,7 @@
                           </grid>
                         </constraints>
                         <properties>
+                          <editable value="false"/>
                           <text value=""/>
                           <toolTipText value="Inserir apenas digitos"/>
                         </properties>
@@ -323,6 +326,7 @@
                           </grid>
                         </constraints>
                         <properties>
+                          <editable value="false"/>
                           <text value=""/>
                         </properties>
                       </component>
@@ -341,6 +345,7 @@
                           </grid>
                         </constraints>
                         <properties>
+                          <editable value="false"/>
                           <text value=""/>
                         </properties>
                       </component>
@@ -365,8 +370,22 @@
                           </grid>
                         </constraints>
                         <properties>
+                          <editable value="false"/>
                           <text value=""/>
                           <toolTipText value="Inserir apenas digitos"/>
+                        </properties>
+                      </component>
+                      <component id="2e2ae" class="javax.swing.JTextField" binding="textFieldDonoAnterior">
+                        <constraints>
+                          <grid row="5" column="1" row-span="1" col-span="8" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="35"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <editable value="false"/>
+                          <focusTraversalPolicyProvider value="false"/>
+                          <text value=""/>
+                          <toolTipText value="dd/mm/yyyy"/>
                         </properties>
                       </component>
                     </children>

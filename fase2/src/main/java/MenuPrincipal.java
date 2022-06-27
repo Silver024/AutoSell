@@ -9,7 +9,7 @@ public class MenuPrincipal extends JFrame {
     private JButton btnMenuClientes;
     private JButton btnMenuEventos;
     private JButton btnMenuPecas;
-    private JButton estatisticasButton;
+    private JButton btnMenuEstatisticas;
     private JLabel Logo;
     private JButton buttonCancel;
 
@@ -32,6 +32,7 @@ public class MenuPrincipal extends JFrame {
         btnMenuTransacao.addActionListener(this::btnMenuTransacaoActionPerformed);
         btnMenuVeiculos.addActionListener(this::btnMenuVeiculosActionPerformed);
         btnMenuPecas.addActionListener(this::btnMenuPecasActionPerformed);
+        btnMenuEstatisticas.addActionListener(this::btnMenuEstatisticasActionPerformed);
     }
 
 
@@ -57,6 +58,10 @@ public class MenuPrincipal extends JFrame {
 
     private void btnMenuPecasActionPerformed(ActionEvent e) {
         new MenuPecas("Menu Peças");
+    }
+
+    private void btnMenuEstatisticasActionPerformed(ActionEvent e){
+        new MenuEstatisticas("Menu Estatísticas");
     }
 
     public static void main(String[] args) {

@@ -69,6 +69,14 @@ public enum DadosAplicacao implements Serializable{
         eventos.add(evento);
     }
 
+    public void adicionarVeiculo(Evento evento, Veiculo veiculo) {
+        if(veiculo == null || veiculos.contains(veiculo)){
+            return;
+        }
+
+        veiculos.add(veiculo);
+    }
+
     public void cancelarEvento(Evento evento){
         if(evento == null || !eventos.contains(evento)){
             return;

@@ -14,7 +14,6 @@ public class AlterarVeiculos extends JFrame {
     private JComboBox cbAlterar;
     private JTable listaVeiculoEditar;
     private JTextField textFieldGarantia;
-    private JTextField textFieldDonoAnterior;
     private JTextField textFieldMesRegisto;
     private JTextField textFieldAnoRegisto;
     private JTextField textFieldDisponibilidade;
@@ -26,6 +25,7 @@ public class AlterarVeiculos extends JFrame {
     private JTextField textFieldQuilometros;
     private JTextField textFieldCor;
     private JTextField textFieldCondicao;
+    private JComboBox cbDonoAnterior;
 
     private DadosAplicacao dadosAplicacao;
     private Veiculo veiculo;
@@ -39,11 +39,17 @@ public class AlterarVeiculos extends JFrame {
         setLocationRelativeTo(null);
 
         LinkedList<Veiculo> veiculos = dadosAplicacao.INSTANCIA.getVeiculos();
+        LinkedList<Cliente> clientes = dadosAplicacao.INSTANCIA.getClientes();
 
         for (Veiculo veiculo : veiculos){
             String[] veiculos_matriculas = {veiculo.getMatricula()};
             String aux = veiculos_matriculas[0];
             cbAlterar.addItem(aux);
+        }
+        for(Cliente cliente : clientes){
+            String[] clientesNomes = {cliente.getNome()};
+            String aux = clientesNomes[0];
+            cbDonoAnterior.addItem(aux);
         }
 
         btnGuardar.addActionListener(this::btnGuardarButtonActionPerformed);
@@ -66,7 +72,7 @@ public class AlterarVeiculos extends JFrame {
             if((veiculo.getMatricula()).equals(veiculo_selecionado)) {
                 criarTabela(veiculo);
                 textFieldGarantia.setText(veiculo.getGarantia());
-                textFieldDonoAnterior.setText(veiculo.getDonoAnterior());
+                cbDonoAnterior.setSelectedItem(veiculo.getDonoAnterior());
                 textFieldMesRegisto.setText(veiculo.getMesRegisto());
                 textFieldAnoRegisto.setText(veiculo.getAnoRegisto());
                 textFieldDisponibilidade.setText(veiculo.getDisponibilidade());
@@ -93,8 +99,8 @@ public class AlterarVeiculos extends JFrame {
                 if(!textFieldGarantia.getText().isEmpty()){
                     veiculo.setGarantia(textFieldGarantia.getText());
                 }
-                if(!textFieldDonoAnterior.getText().isEmpty()){
-                    veiculo.setDonoAnterior(textFieldDonoAnterior.getText());
+                if(!cbDonoAnterior.getSelectedItem().toString().isEmpty()){
+                    veiculo.setDonoAnterior(cbDonoAnterior.getSelectedItem().toString());
                 }
                 if(!textFieldMesRegisto.getText().isEmpty()){
                     veiculo.setMesRegisto(textFieldMesRegisto.getText());
@@ -143,10 +149,10 @@ public class AlterarVeiculos extends JFrame {
 
         DefaultTableModel modelo = new DefaultTableModel(cabecalhos, 0);
 
-
         Object[] objects = {veiculo.getMatricula(), veiculo.getMarca(), veiculo.getModelo(), veiculo.getGarantia(), veiculo.getDisponibilidade(), veiculo.getDonoAnterior(), veiculo.getNrDonos(), veiculo.getMesRegisto(), veiculo.getAnoRegisto(), veiculo.getQuilometros(), veiculo.getCilindrada(), veiculo.getPotencia(), veiculo.getCor(), veiculo.getSegmento(), veiculo.getNrPortas(), veiculo.getCondicao()};
         modelo.addRow(cabecalhos);
         modelo.addRow(objects);
+        modelo.addRow(new Object[]{null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,});
 
         listaVeiculoEditar.setModel(modelo);
         listaVeiculoEditar.setEnabled(false);

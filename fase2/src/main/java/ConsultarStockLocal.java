@@ -48,8 +48,10 @@ public class ConsultarStockLocal extends JFrame{
         String localSelecionado = cbSelecionarLocal.getSelectedItem().toString();
 
         for(Peca peca : pecas){
-            if(peca.getLocal().toString().equals(localSelecionado)){
-                if(peca.getTipo().toString().equals(tipoSelecionado)){
+            String localPeca = peca.getLocal();
+            if(localPeca.equals(localSelecionado)){
+                String tipoPeca = peca.getTipo();
+                if(tipoPeca.equals(tipoSelecionado)){
                     pecasValidas.add(peca);
                 }
             }
@@ -59,11 +61,11 @@ public class ConsultarStockLocal extends JFrame{
     }
 
     private void cbSelecionarLocalActionPerformed(ActionEvent actionEvent) {
-        //Falta Codigo
+
     }
 
     private void cbSelecionarTipoActionPerformed(ActionEvent actionEvent) {
-        //Falta Codigo
+
     }
 
     private void btnVoltarActionPerformed(ActionEvent actionEvent) {
@@ -72,7 +74,6 @@ public class ConsultarStockLocal extends JFrame{
     }
 
     private void criarTabela(LinkedList<Peca> pecasValidas) {
-
         String[] cabecalhos = {"Nome", "Quantidade"};
 
         DefaultTableModel modelo = new DefaultTableModel(cabecalhos,0);

@@ -1,14 +1,12 @@
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.LinkedList;
 
-public class RegistarVeiculo extends JFrame {
+public class RegistarVeiculo extends JFrame{
     private JPanel painelRegistarVeiculo;
-    private JButton buttonOK;
-    private JButton buttonCancel;
     private JButton btnCancelar;
     private JButton btnGuardar;
     private JTextField textFieldGarantia;
-    private JTextField textFieldDonoAnterior;
     private JTextField textFieldMesRegisto;
     private JTextField textFieldAnoRegisto;
     private JTextField textFieldMatricula;
@@ -21,8 +19,10 @@ public class RegistarVeiculo extends JFrame {
     private JTextField textFieldQuilometros;
     private JTextField textFieldCor;
     private JTextField textFieldCondicao;
-    private JTextField textFieldMarca;
     private JTextField textFieldModelo;
+    private JComboBox cbDonoAnterior;
+    private JComboBox cbMarca;
+    private DadosAplicacao dadosAplicacao;
 
     public RegistarVeiculo(String title) {
         super(title);
@@ -32,8 +32,17 @@ public class RegistarVeiculo extends JFrame {
         setVisible(true);
         setLocationRelativeTo(null);
 
+        LinkedList<Cliente> clientes = dadosAplicacao.INSTANCIA.getClientes();
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
         btnGuardar.addActionListener(this::btnGuardarActionPerformed);
+
+        cbMarca.setModel(new DefaultComboBoxModel<>(ListaMarcas.values()));
+
+        for(Cliente cliente : clientes){
+            String[] clientesNomes = {cliente.getNome()};
+            String aux = clientesNomes[0];
+            cbDonoAnterior.addItem(aux);
+        }
     }
 
     private void btnCancelarActionPerformed(ActionEvent e) {
@@ -45,15 +54,16 @@ public class RegistarVeiculo extends JFrame {
         validarDados();
         setVisible(false);
         toBack();
+
     }
 
     private void validarDados() {
         String matricula = textFieldMatricula.getText();
-        String marca = textFieldMarca.getText();
+        String marca = cbMarca.getSelectedItem().toString();
         String modelo = textFieldModelo.getText();
         String garantia = textFieldGarantia.getText();
         String disponibilidade = textFieldDisponibilidade.getText();
-        String donoAnteiror = textFieldDonoAnterior.getText();
+        String donoAnteiror = cbDonoAnterior.getSelectedItem().toString();
         String nrDonos = textFieldNrDonos.getText();
         String mesRegisto = textFieldMesRegisto.getText();
         String cilindrada = textFieldCilindrada.getText();

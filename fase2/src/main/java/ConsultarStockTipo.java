@@ -37,10 +37,11 @@ public class ConsultarStockTipo extends JFrame{
         setVisible(true);
 
         LinkedList<Peca> pecas = dadosAplicacao.INSTANCIA.getPecas();
-        String tipo = cbSelecionarTipo.getSelectedItem().toString();
+        String tipoSelecionado = cbSelecionarTipo.getSelectedItem().toString();
 
         for(Peca peca : pecas){
-            if(peca.getTipo().equals(tipo)){
+            String tipoPeca = peca.getTipo();
+            if(tipoPeca.equals(tipoSelecionado)){
                 pecasValidas.add(peca);
             }
         }
