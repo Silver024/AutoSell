@@ -36,6 +36,7 @@ public class ListarClientes extends JFrame {
 
         for (Cliente cliente : clientes) {
             Object[] objects = {cliente.getNome(), cliente.getMorada(), cliente.getGenero(), cliente.getDataNascimento(), cliente.getContacto(), cliente.getEmail(), cliente.getnif(), cliente.getEstadoProfissional()};
+            modelo.addRow(cabecalhos);
             modelo.addRow(objects);
         }
 
