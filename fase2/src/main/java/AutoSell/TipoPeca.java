@@ -1,0 +1,5 @@
+package AutoSell;
+
+public enum TipoPeca {
+    CARROCARIA, CONSUMIVEL, INTERIOR, MOTOR, TRANSMISSAO, TRAVAGEM, SUSPENSAO;
+}
