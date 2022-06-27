@@ -7,7 +7,6 @@ public class ListarClientes extends JFrame {
     private JPanel painelListarClientes;
     private JButton btnVoltar;
     private JTable listaClientes;
-    private JButton buttonCancel;
     private Cliente cliente;
     private DadosAplicacao dadosAplicacao;
 

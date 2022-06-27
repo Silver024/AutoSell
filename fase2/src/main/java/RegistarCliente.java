@@ -106,6 +106,8 @@ public class RegistarCliente extends JFrame {
 
         } else {
             DadosAplicacao.INSTANCIA.registarCliente(new Cliente(nome,morada,genero,dataNascimento,contacto,email,nif,estadoProfissional));
+            JOptionPane.showMessageDialog(null,"Cliente  registado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+
         }
     }
 

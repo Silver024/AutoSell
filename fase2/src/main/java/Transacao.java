@@ -2,82 +2,60 @@ import java.io.Serializable;
 import java.lang.ref.Cleaner;
 
 public class Transacao implements Serializable {
-    private String nome, morada, genero, dataNascimento, contacto, email, nif, estadoProfissional;
+    private String cliente;
+    private String veiculo;
+    private String data;
+    private String vendaCompra;
+    private String preco;
 
-    public Transacao(String nome, String morada, String genero, String dataNascimento, String contacto, String email, String nif, String estadoProfissional){
-        this.nome = nome;
-        this.genero = genero;
-        this.dataNascimento = dataNascimento;
-        this.contacto = contacto;
-        this.morada = morada;
-        this.email = email;
-        this.nif = nif;
-        this.estadoProfissional = estadoProfissional;
+    public Transacao(String cliente, String veiculo, String data,String vendaCompra, String preco){
+        this.cliente = cliente;
+        this.veiculo = veiculo;
+        this.data = data;
+        this.preco = preco;
+        this.vendaCompra = vendaCompra;
     }
 
-    public String getNome() {
-        return nome;
+    public String getCliente() {
+        return cliente;
     }
 
-    public String getMorada() {
-        return morada;
+    public String getVeiculo() {
+        return veiculo;
     }
 
-    public String getGenero() {
-        return genero;
+    public String getData() {
+        return data;
     }
 
-    public String getDataNascimento() {
-        return dataNascimento;
+    public String getPreco() {
+        return preco;
     }
 
-    public String getContacto() {
-        return contacto;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getnif() {
-        return nif;
-    }
-
-    public String getEstadoProfissional() {
-        return estadoProfissional;
+    public String getVendaCompra() {
+        return vendaCompra;
     }
 
 
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
     }
 
-    public void setMorada(String morada) {
-        this.morada = morada;
+    public void setVeiculo(String veiculo) {
+        this.veiculo = veiculo;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
+    public void setData(String data) {
+        this.data = data;
     }
 
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
+    public void setPreco(String preco) {
+        this.preco = preco;
     }
 
-    public void setContacto(String contacto) {
-        this.contacto = contacto;
+    public void setVendaCompra(String vendaCompra) {
+        this.vendaCompra = vendaCompra;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setNif(String nif) {
-        this.nif = nif;
-    }
-
-    public void setEstadoProfissional(String estadoProfissional) {
-        this.estadoProfissional = estadoProfissional;
-    }
 }

@@ -13,6 +13,7 @@ public enum DadosAplicacao implements Serializable{
     private LinkedList<Evento> eventos;
     private LinkedList<Peca> pecas;
     private LinkedList<PedidoPeca> pedidosPecas;
+    private LinkedList<Transacao> transacoes;
 
     DadosAplicacao(){
         clientes = new LinkedList<>();
@@ -20,6 +21,7 @@ public enum DadosAplicacao implements Serializable{
         eventos = new LinkedList<>();
         pecas = new LinkedList<>();
         pedidosPecas = new LinkedList<>();
+        transacoes = new LinkedList<>();
     }
 
     public LinkedList<Cliente> getClientes(){
@@ -29,6 +31,10 @@ public enum DadosAplicacao implements Serializable{
     public LinkedList<Veiculo> getVeiculos() {
         return veiculos;
     }
+    public LinkedList<Transacao> getTransacoes() {
+        return transacoes;
+    }
+
 
     public void registarCliente(Cliente cliente){
         if (cliente == null || clientes.contains(cliente)){
@@ -101,5 +107,12 @@ public enum DadosAplicacao implements Serializable{
         }
 
         pedidosPecas.remove(pedidoPeca);
+    }
+
+    public void realizarTransacao(Transacao transacao){
+        if (transacao == null || transacoes.contains(transacao)){
+            return;
+        }
+        transacoes.add(transacao);
     }
 }

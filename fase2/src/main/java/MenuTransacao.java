@@ -19,8 +19,10 @@ public class MenuTransacao extends JFrame {
 
         btnVoltar.addActionListener(this::btnVoltarActionPerformed);
         btnrealizarTransacao.addActionListener(this::btnRealizarTransacaoActionPerformed);
-
+        btnlistarTransacoes.addActionListener(this::btnListarTransacoesActionPerformed);
     }
+
+
 
 
 //Voltar
@@ -30,7 +32,12 @@ public class MenuTransacao extends JFrame {
         }
 
     private void btnRealizarTransacaoActionPerformed(ActionEvent e){
-        new RealizarTransacao("Realizar Transacao");
+        new RealizarTransacao("Realizar Transacao", dadosAplicacao);
+
+    }
+
+    private void btnListarTransacoesActionPerformed(ActionEvent e){
+        new ListarTransacoes("Lista Transacoes", dadosAplicacao);
 
     }
 

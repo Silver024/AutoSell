@@ -22,7 +22,7 @@ public class MenuClientes extends JFrame {
         btnListarClientes.addActionListener(this::btnListarClienteActionPerformed);
         btnEliminarCliente.addActionListener(this::btnEliminarClienteActionPerformed);
         btnEditarCliente.addActionListener(this::btnEditarClienteActionPerformed);
-
+        btnConsultarTransacaoCliente.addActionListener(this::btnConsultarTransacaoClienteActionPerformed);
         setContentPane(painelMenuClientes);
         pack();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -54,6 +54,10 @@ public class MenuClientes extends JFrame {
     private void btnEditarClienteActionPerformed(ActionEvent e){
         new EditarCliente("Editar Cliente", dadosAplicacao);
 
+    }
+
+    private void btnConsultarTransacaoClienteActionPerformed(ActionEvent e){
+        new ConsultarTransacoesCliente("Transacoes do Cliente",dadosAplicacao);
     }
 
 

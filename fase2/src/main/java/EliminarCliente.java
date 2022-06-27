@@ -54,6 +54,8 @@ public class EliminarCliente extends JFrame {
         for (Cliente cliente : clientes) {
             if((cliente.getNome()).equals(cliente_selecionado)) {
                 DadosAplicacao.INSTANCIA.eliminarCliente(cliente);
+                JOptionPane.showMessageDialog(null,"Cliente eliminado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+
                 break;
             }
         }
