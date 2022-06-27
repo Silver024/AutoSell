@@ -7,7 +7,6 @@ public class ConsultarVeiculo extends JFrame {
     private JPanel contentPane;
     private JButton btnOK;
     private JTextField textFieldGarantia;
-    private JTextField textFieldDonoAnterior;
     private JTextField textFieldMesRegisto;
     private JTextField textFieldAnoRegisto;
     private JTextField textFieldDisponibilidade;
@@ -23,6 +22,7 @@ public class ConsultarVeiculo extends JFrame {
     private JTextField textFieldModelo;
     private JComboBox cbMatricula;
     private JTable listaVeiculoConsultar;
+    private JTextField textFieldDonoAnterior;
 
     private DadosAplicacao dadosAplicacao;
     private Veiculo veiculo;
@@ -91,6 +91,8 @@ public class ConsultarVeiculo extends JFrame {
         Object[] objects = {veiculo.getMatricula(), veiculo.getMarca(), veiculo.getModelo(), veiculo.getGarantia(), veiculo.getDisponibilidade(), veiculo.getDonoAnterior(), veiculo.getNrDonos(), veiculo.getMesRegisto(), veiculo.getAnoRegisto(), veiculo.getQuilometros(), veiculo.getCilindrada(), veiculo.getPotencia(), veiculo.getCor(), veiculo.getSegmento(), veiculo.getNrPortas(), veiculo.getCondicao()};
         modelo.addRow(cabecalhos);
         modelo.addRow(objects);
+        modelo.addRow(new Object[]{null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,});
+
 
         listaVeiculoConsultar.setModel(modelo);
         listaVeiculoConsultar.setEnabled(false);
